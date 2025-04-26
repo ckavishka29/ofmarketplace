@@ -1,0 +1,246 @@
+<html class="scroll-smooth bg-black" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OF Marketplace - Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+          },
+          keyframes: {
+            goldleak: {
+              '0%, 100%': { transform: 'translateX(0%) translateY(0%)', opacity: 0.3 },
+              '50%': { transform: 'translateX(10%) translateY(-5%)', opacity: 0.7 }
+            }
+          },
+          animation: {
+            goldleak: 'goldleak 15s ease-in-out infinite'
+          },
+          colors: {
+            gold: '#FFD700',
+            brushblack: '#1B1B1B',
+            darkerblack: '#141414', /* Darker Black for Background */
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --gold: linear-gradient(to right, #D4AF37, #b76e79);
+      --pink: #f7b0c0;
+      --lightblue: #84cbe7;
+      --darkblue: #4ec1ed;
+      --text-color: #f3eee9;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000000;
+      color: var(--text-color);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header {
+      background-color: var(--darkblue);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    a {
+      color: var(--lightblue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--pink);
+    }
+
+    .highlight {
+      background-color: var(--pink);
+      color: var(--text-color);
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .highlight:hover {
+      background-color: var(--lightblue);
+    }
+
+
+    /* Heading Styles */
+    .page-heading {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text-color);
+      text-align: center;
+      margin-top: 100px; /* Centering the heading */
+    }
+
+    .pink-leak-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(247, 176, 192, 0.05), transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(247, 176, 192, 0.07), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: pinkleak 15s ease-in-out infinite;
+}
+
+
+  </style>
+</head>
+<body>
+    <!-- Alpine.js for interactivity -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+
+  <!-- Header -->
+<header class="bg-black text-white py-4">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center space-x-4">
+        <img src="logo-removebg-preview.png" alt="Logo" class="h-20 w-auto">
+      </div>
+  
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden" x-data="{ open: false }">
+        <button @click="open = !open" class="text-white focus:outline-none">
+          <svg x-show="!open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg x-show="open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+  
+        <!-- Mobile Menu -->
+        <div x-show="open" @click.away="open = false" class="absolute left-0 top-16 w-full bg-black text-white flex flex-col space-y-3 p-6 z-50 md:hidden">
+          <a href="home.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">HOME</a>
+          <div x-data="{ dropdown: false }">
+            <button @click="dropdown = !dropdown" class="flex justify-between items-center w-full hover:text-pink-300 focus:outline-none focus:ring-0 transition-all duration-300">
+              <span>SERVICES</span>
+              <svg :class="{ 'rotate-180': dropdown }" class="h-4 w-4 ml-2 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M5.25 7.5l4.5 4.5 4.5-4.5" />
+              </svg>
+            </button>
+            <div x-show="dropdown" x-transition class="flex flex-col pl-4 space-y-2 mt-2 text-sm">
+              <a href="servicepage.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">Agency-to-Agency & Model Brokering</a>
+              <a href="servicepage.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">Marketing + Promo Services</a>
+              <a href="servicepage.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">Production & Visual Setup</a>
+              <a href="servicepage.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">Chatter Training & Optimization</a>
+            </div>
+          </div>
+          <a href="#marketplace" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">MODERN MARKETPLACE</a>
+          <a href="#contact" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">CONTACT</a>
+        </div>
+      </div>
+  
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex items-center space-x-10 font-semibold text-lg relative">
+        <a href="home.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">HOME</a>
+        <div class="relative" x-data="{ open: false }">
+            <button @click="open = !open" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#f7b0c0] to-[#4ec1ed] text-white hover:scale-105 hover:opacity-90 focus:outline-none focus:ring-0 transition-all duration-300">
+                <span>SERVICES</span>
+                <svg :class="{ 'rotate-180': open }" class="ml-1 h-4 w-4 fill-current transition-transform" viewBox="0 0 20 20">
+                  <path d="M5.25 7.5l4.5 4.5 4.5-4.5" />
+                </svg>
+              </button>
+              
+              <div x-show="open" @click.away="open = false" x-transition
+     class="absolute left-0 mt-2 flex flex-col bg-black text-white py-2 rounded-lg shadow-lg min-w-[260px] space-y-2 z-50">
+  <a href="servicepage.html" class="px-4 py-2 rounded-md text-white hover:bg-gradient-to-r hover:from-[#f7b0c0]/40 hover:to-[#4ec1ed]/40 focus:outline-none focus:ring-0 transition-all duration-200">
+    Agency-to-Agency & Model Brokering
+  </a>
+  <a href="servicepage.html" class="px-4 py-2 rounded-md text-white hover:bg-gradient-to-r hover:from-[#f7b0c0]/40 hover:to-[#4ec1ed]/40 focus:outline-none focus:ring-0 transition-all duration-200">
+    Marketing + Promo Services
+  </a>
+  <a href="servicepage.html" class="px-4 py-2 rounded-md text-white hover:bg-gradient-to-r hover:from-[#f7b0c0]/40 hover:to-[#4ec1ed]/40 focus:outline-none focus:ring-0 transition-all duration-200">
+    Production & Visual Setup
+  </a>
+  <a href="servicepage.html" class="px-4 py-2 rounded-md text-white hover:bg-gradient-to-r hover:from-[#f7b0c0]/40 hover:to-[#4ec1ed]/40 focus:outline-none focus:ring-0 transition-all duration-200">
+    Chatter Training & Optimization
+  </a>
+</div>
+
+
+        </div>
+        <a href="#marketplace" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">MODERN MARKETPLACE</a>
+        <a href="#contact" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <section class="relative py-16 bg-black text-white">
+    <!-- Light Leak Overlay -->
+    <div class="pink-leak-overlay"></div>
+  
+    <!-- Service Heading -->
+    <div class="relative text-center">
+      <h2 class="text-4xl font-extrabold text-white">
+        Our Exclusive Services
+      </h2>
+    </div>
+  </section>
+  
+  <!-- Tailwind CSS Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            pinkleak: {
+              '0%, 100%': { transform: 'translateX(0%) translateY(0%)', opacity: 0.3 },
+              '50%': { transform: 'translateX(10%) translateY(-5%)', opacity: 0.7 }
+            }
+          },
+          animation: {
+            pinkleak: 'pinkleak 15s ease-in-out infinite'
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    /* Light Leak Overlay Effect */
+    .pink-leak-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(247, 176, 192, 0.05), transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(247, 176, 192, 0.07), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      animation: pinkleak 15s ease-in-out infinite;
+    }
+  </style>
+  
+  
+  
+   
+
+
+</body>
+</html>
+
