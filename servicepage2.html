@@ -1,0 +1,642 @@
+<html class="scroll-smooth bg-black" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OF Marketplace - Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+          },
+          keyframes: {
+            goldleak: {
+              '0%, 100%': { transform: 'translateX(0%) translateY(0%)', opacity: 0.3 },
+              '50%': { transform: 'translateX(10%) translateY(-5%)', opacity: 0.7 }
+            }
+          },
+          animation: {
+            goldleak: 'goldleak 15s ease-in-out infinite'
+          },
+          colors: {
+            gold: '#FFD700',
+            brushblack: '#1B1B1B',
+            darkerblack: '#141414', /* Darker Black for Background */
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --gold: linear-gradient(to right, #D4AF37, #b76e79);
+      --pink: #f7b0c0;
+      --lightblue: #84cbe7;
+      --darkblue: #4ec1ed;
+      --text-color: #f3eee9;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000000;
+      color: var(--text-color);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header {
+      background-color: var(--darkblue);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    a {
+      color: var(--lightblue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--pink);
+    }
+
+    .highlight {
+      background-color: var(--pink);
+      color: var(--text-color);
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .highlight:hover {
+      background-color: var(--lightblue);
+    }
+
+
+    /* Heading Styles */
+    .page-heading {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text-color);
+      text-align: center;
+      margin-top: 100px; /* Centering the heading */
+    }
+
+    .pink-leak-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(247, 176, 192, 0.05), transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(247, 176, 192, 0.07), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: pinkleak 15s ease-in-out infinite;
+}
+
+
+  </style>
+</head>
+<body class="relative bg-darkerblack text-white">
+    <!-- Alpine.js for interactivity -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+ <!-- Gold Light Leak Overlay -->
+  <div class="pink-leak-overlay"></div>
+
+  <!-- Header -->
+<header class="bg-black text-white py-4">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center space-x-4">
+        <img src="logo-removebg-preview.png" alt="Logo" class="h-20 w-auto">
+      </div>
+  
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden" x-data="{ open: false }">
+        <button @click="open = !open" class="text-white focus:outline-none">
+          <svg x-show="!open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg x-show="open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+  
+        <!-- Mobile Menu -->
+        <div x-show="open" @click.away="open = false" class="absolute left-0 top-16 w-full bg-black text-white flex flex-col space-y-3 p-6 z-50 md:hidden">
+          <a href="home.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">HOME</a>
+          <div x-data="{ dropdown: false }">
+            <button @click="dropdown = !dropdown" class="flex justify-between items-center w-full hover:text-pink-300 focus:outline-none focus:ring-0 transition-all duration-300">
+              <span>SERVICES</span>
+              <svg :class="{ 'rotate-180': dropdown }" class="h-4 w-4 ml-2 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M5.25 7.5l4.5 4.5 4.5-4.5" />
+              </svg>
+            </button>
+            <div x-show="dropdown" x-transition class="flex flex-col pl-4 space-y-2 mt-2 text-sm">
+              <a href="servicepage.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">Agency-to-Agency & Model Brokering</a>
+              <a href="servicepage2.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">Marketing + Promo Services</a>
+              <a href="servicepage3.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">Production & Visual Setup</a>
+              <a href="servicepage4.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">Chatter Training & Optimization</a>
+            </div>
+          </div>
+          <a href="#contact" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">MODEL MARKETPLACE</a>
+          <a href="#contact" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">CONTACT</a>
+        </div>
+      </div>
+  
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex items-center space-x-10 font-semibold text-lg relative">
+        <a href="home.html" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">HOME</a>
+        <div class="relative" x-data="{ open: false }">
+            <button @click="open = !open" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#f7b0c0] to-[#4ec1ed] text-white hover:scale-105 hover:opacity-90 focus:outline-none focus:ring-0 transition-all duration-300">
+                <span>SERVICES</span>
+                <svg :class="{ 'rotate-180': open }" class="ml-1 h-4 w-4 fill-current transition-transform" viewBox="0 0 20 20">
+                  <path d="M5.25 7.5l4.5 4.5 4.5-4.5" />
+                </svg>
+              </button>
+              
+              <div x-show="open" @click.away="open = false" x-transition
+     class="absolute left-0 mt-2 flex flex-col bg-black text-white py-2 rounded-lg shadow-lg min-w-[260px] space-y-2 z-50">
+  <a href="servicepage.html" class="px-4 py-2 rounded-md text-white hover:bg-gradient-to-r hover:from-[#f7b0c0]/40 hover:to-[#4ec1ed]/40 focus:outline-none focus:ring-0 transition-all duration-200">
+    Agency-to-Agency & Model Brokering
+  </a>
+  <a href="servicepage2.html" class="px-4 py-2 rounded-md text-white hover:bg-gradient-to-r hover:from-[#f7b0c0]/40 hover:to-[#4ec1ed]/40 focus:outline-none focus:ring-0 transition-all duration-200">
+    Marketing + Promo Services
+  </a>
+  <a href="servicepage3.html" class="px-4 py-2 rounded-md text-white hover:bg-gradient-to-r hover:from-[#f7b0c0]/40 hover:to-[#4ec1ed]/40 focus:outline-none focus:ring-0 transition-all duration-200">
+    Production & Visual Setup
+  </a>
+  <a href="servicepage4.html" class="px-4 py-2 rounded-md text-white hover:bg-gradient-to-r hover:from-[#f7b0c0]/40 hover:to-[#4ec1ed]/40 focus:outline-none focus:ring-0 transition-all duration-200">
+    Chatter Training & Optimization
+  </a>
+</div>
+
+
+        </div>
+        <a href="#contact" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">MODEL MARKETPLACE</a>
+        <a href="#contact" class="hover:text-pink-300 hover:bg-pink-600 hover:bg-opacity-50 focus:outline-none focus:ring-0 transition-all duration-300 px-4 py-2 rounded-md">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <!-- Tailwind CSS Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            pinkleak: {
+              '0%, 100%': { transform: 'translateX(0%) translateY(0%)', opacity: 0.3 },
+              '50%': { transform: 'translateX(10%) translateY(-5%)', opacity: 0.7 }
+            }
+          },
+          animation: {
+            pinkleak: 'pinkleak 15s ease-in-out infinite'
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    /* Light Leak Overlay Effect */
+    .pink-leak-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(247, 176, 192, 0.05), transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(247, 176, 192, 0.07), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      animation: pinkleak 15s ease-in-out infinite;
+    }
+  </style>
+
+
+
+
+
+
+<head>
+  <!-- Add Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<section class="relative px-6 py-50 lg:py-44 overflow-hidden bg-black text-white font-poppins" style="background-image: url('path/to/your-illustration.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+    <!-- Light Leak Overlay -->
+    <div class="pink-leak-overlay absolute inset-0 pointer-events-none z-0"></div>
+  
+    <!-- Hero Content -->
+    <div class="max-w-2xl mx-auto text-center relative z-10">
+      
+      <!-- Icons Stack -->
+      <div class="mb-6 flex flex-col items-center space-y-3">
+        <!-- Bullhorn Icon -->
+        <i class="fas fa-bullhorn text-5xl" style="background-image: linear-gradient(to right, #f7b0c0, #4ec1ed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+      </div>
+  
+      <!-- Heading -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-snug">
+        <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(to right, #f7b0c0, #4ec1ed); display: inline-block;">
+          <span class="block mb-2">Marketing</span>
+          <span class="block">+ Promo Services</span>
+        </span>
+      </h1>
+      
+      
+      
+      
+  
+      <!-- Subtitle -->
+      <p class="text-base sm:text-lg md:text-xl mb-8 text-[#e0b3c8]">
+        Promo design, captions, group boosts, and digital content."
+      </p>
+  
+      <!-- CTA Button -->
+      <a href="https://t.me/promotrs_bot " target="_blank">
+        <button class="text-black text-sm sm:text-base font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 backdrop-blur-md bg-opacity-80 bg-gradient-to-r from-[#f7b0c0] to-[#4ec1ed] hover:scale-105 hover:shadow-[0_0_35px_rgba(132,203,231,0.5)]">
+          Contact on Telegram
+        </button>
+      </a>
+    </div>
+  </section>
+
+
+
+
+
+
+ <!-- overview section -->
+<section class="py-32 px-6 bg-black">
+    <div class="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+      
+      <!-- Text Content -->
+      <div class="max-w-xl mx-auto lg:mx-0 text-left space-y-8">
+        <h2 class="text-4xl lg:text-5xl font-extrabold leading-relaxed tracking-tight">
+          What’s Included in <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(to right, #f7b0c0, #4ec1ed); line-height: 1.2;">Promo & Content Services</span>?
+        </h2>
+        
+        <p class="text-base sm:text-lg md:text-xl text-[#e0b3c8] leading-relaxed tracking-wide">
+          Flyer design for GG/S4S drops, caption writing, group promo coordination, eBook creation, and mini-course production to boost your brand and conversions.
+        </p>
+      </div>
+  
+      <!-- Feature Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto lg:mx-0">
+        
+        <!-- Card 1 -->
+        <div class="rounded-xl p-6 border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-105 hover:shadow-xl">
+          <div class="w-12 h-12 rounded-full bg-[#f7b0c0] flex items-center justify-center mb-4 text-white text-xl font-bold">✔</div>
+          <h3 class="text-lg font-semibold mb-1">Flyer Design</h3>
+          <p class="text-sm opacity-80 leading-relaxed">Custom flyers for GG/S4S drops tailored to your aesthetic and audience.</p>
+        </div>
+  
+        <!-- Card 2 -->
+        <div class="rounded-xl p-6 border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-105 hover:shadow-xl">
+          <div class="w-12 h-12 rounded-full bg-[#4ec1ed] flex items-center justify-center mb-4 text-white text-xl font-bold">✔</div>
+          <h3 class="text-lg font-semibold mb-1">Caption Writing</h3>
+          <p class="text-sm opacity-80 leading-relaxed">Catchy, brand-aligned captions designed to drive traffic and engagement.</p>
+        </div>
+  
+        <!-- Card 3 -->
+        <div class="rounded-xl p-6 border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-105 hover:shadow-xl">
+          <div class="w-12 h-12 rounded-full bg-[#a173ff] flex items-center justify-center mb-4 text-white text-xl font-bold">✔</div>
+          <h3 class="text-lg font-semibold mb-1">Group Promo Coordination</h3>
+          <p class="text-sm opacity-80 leading-relaxed">Organized S4S and promo campaigns with aligned creators or agencies.</p>
+        </div>
+  
+        <!-- Card 4 -->
+        <div class="rounded-xl p-6 border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-105 hover:shadow-xl">
+          <div class="w-12 h-12 rounded-full bg-[#00c897] flex items-center justify-center mb-4 text-white text-xl font-bold">✔</div>
+          <h3 class="text-lg font-semibold mb-1">eBooks & Mini-Courses</h3>
+          <p class="text-sm opacity-80 leading-relaxed">Digital content creation that educates, engages, and sells for you.</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+ <!-- How it Works section -->
+<section class="py-20 px-6 bg-black">
+    <style>
+      :root {
+        --pink: #f7b0c0;
+        --darkblue: #4ec1ed;
+        --text-color: #f3eee9;
+        --gradient: linear-gradient(to right, #f7b0c0, #4ec1ed);
+      }
+    </style>
+  
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 font-poppins bg-clip-text text-transparent" style="background-image: var(--gradient);">
+        How Does It Work?
+      </h2>
+  
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-12">
+  
+        <!-- Step 1: Submit Inquiry -->
+        <div class="bg-zinc-800 bg-opacity-50 backdrop-blur-lg rounded-2xl p-8 text-white shadow-xl flex flex-col gap-6 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-[--darkblue] hover:ring-4 hover:ring-[--darkblue]">
+          <div class="text-4xl font-bold w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#f7b0c0] to-[#4ec1ed] text-black">1</div>
+          <h3 class="text-xl font-semibold" style="background-image: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Submit Inquiry</h3>
+          <p class="text-[#e0b3c8] text-sm">
+            Reach out via Telegram with your needs for flyer design, caption writing, group promo coordination, or digital product creation, and we will guide you through the process in a private, secure setting.
+          </p>
+        </div>
+  
+        <!-- Step 2: Verification & Screening -->
+        <div class="bg-zinc-800 bg-opacity-50 backdrop-blur-lg rounded-2xl p-8 text-white shadow-xl flex flex-col gap-6 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-[--darkblue] hover:ring-4 hover:ring-[--darkblue]">
+          <div class="text-4xl font-bold w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#f7b0c0] to-[#4ec1ed] text-black">2</div>
+          <h3 class="text-xl font-semibold" style="background-image: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Verification & Screening</h3>
+          <p class="text-[#e0b3c8] text-sm">
+            We ensure both parties meet professionalism and privacy standards before proceeding with the matchmaking process, ensuring quality and confidentiality for all services.
+          </p>
+        </div>
+  
+        <!-- Step 3: Brokering Match -->
+        <div class="bg-zinc-800 bg-opacity-50 backdrop-blur-lg rounded-2xl p-8 text-white shadow-xl flex flex-col gap-6 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-[--darkblue] hover:ring-4 hover:ring-[--darkblue]">
+          <div class="text-4xl font-bold w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#f7b0c0] to-[#4ec1ed] text-black">3</div>
+          <h3 class="text-xl font-semibold" style="background-image: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Brokering Match</h3>
+          <p class="text-[#e0b3c8] text-sm">
+            We connect agencies and models, ensuring both sides align with the vision and expectations for a smooth partnership. Whether it's for flyer promotions, group coordination, or digital product launches, we make it seamless.
+          </p>
+        </div>
+  
+        <!-- Step 4: Finalize & Onboard -->
+        <div class="bg-zinc-800 bg-opacity-50 backdrop-blur-lg rounded-2xl p-8 text-white shadow-xl flex flex-col gap-6 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-[--darkblue] hover:ring-4 hover:ring-[--darkblue]">
+          <div class="text-4xl font-bold w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-[#f7b0c0] to-[#4ec1ed] text-black">4</div>
+          <h3 class="text-xl font-semibold" style="background-image: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Finalize & Onboard</h3>
+          <p class="text-[#e0b3c8] text-sm">
+            We handle all the necessary paperwork, introductions, and the onboarding process to ensure a seamless experience. Whether you're launching a promotional campaign, creating eBooks, or coordinating a group promo, we've got you covered.
+          </p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  
+  
+
+
+
+  <!-- What’s Included section -->
+<section class="py-20 px-6 bg-black">
+    <!-- Header -->
+    <div class="relative z-10 max-w-7xl mx-auto text-center mb-12">
+      <h2 class="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
+        What's <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(to right, #f7b0c0, #4ec1ed);">Included</span>?
+      </h2>
+      <p class="text-base sm:text-lg md:text-xl mb-8 text-[#e0b3c8]">Services to elevate your brand, from design to digital products and promotions.</p>
+    </div>
+  
+    <!-- Features Grid -->
+    <div class="relative z-10 max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-left">
+      <!-- Feature 1: Flyer Design -->
+      <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:scale-105 transition-all duration-300">
+        <div class="text-pink-400 text-2xl mb-3">✓</div>
+        <h3 class="font-semibold text-lg mb-2">Flyer Design for GG/S4S Drops</h3>
+        <p class="text-sm opacity-80">Custom flyers designed to attract attention and drive engagement for your GG/S4S campaigns.</p>
+      </div>
+      
+      <!-- Feature 2: Caption Writing -->
+      <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:scale-105 transition-all duration-300">
+        <div class="text-pink-400 text-2xl mb-3">✓</div>
+        <h3 class="font-semibold text-lg mb-2">Caption Writing</h3>
+        <p class="text-sm opacity-80">Engaging and impactful captions designed to resonate with your target audience and boost interaction.</p>
+      </div>
+  
+      <!-- Feature 3: Group Promo Coordination -->
+      <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:scale-105 transition-all duration-300">
+        <div class="text-pink-400 text-2xl mb-3">✓</div>
+        <h3 class="font-semibold text-lg mb-2">Group Promo Coordination</h3>
+        <p class="text-sm opacity-80">Efficiently coordinate group promos to maximize exposure and collaboration across creators.</p>
+      </div>
+  
+      <!-- Feature 4: eBooks Creation -->
+      <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:scale-105 transition-all duration-300">
+        <div class="text-pink-400 text-2xl mb-3">✓</div>
+        <h3 class="font-semibold text-lg mb-2">eBooks & Mini-Courses</h3>
+        <p class="text-sm opacity-80">Develop informative eBooks and mini-courses that provide value and generate revenue.</p>
+      </div>
+    </div>
+  
+  <!-- Agency Service Comparison Table -->
+<div class="mt-24 relative z-1 max-w-6xl mx-auto">
+  
+
+  </section>
+  
+  
+
+  
+  
+  
+<!-- pricing Section-->
+
+
+
+
+
+
+
+
+
+  <section class="px-6 py-16 lg:py-20 overflow-hidden bg-black text-white">
+    <style>
+      :root {
+        --velvet-gradient: linear-gradient(to right, #f7b0c0, #4ec1ed);
+      }
+    </style>
+  
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-8 font-montserrat bg-clip-text text-transparent" style="background-image: var(--velvet-gradient);">
+        Frequently Asked Questions
+      </h2>
+      <div class="p-6 space-y-6 text-left">
+        <!-- FAQ Item -->
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: What are promo flyers and how do they work?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: Promo flyers are visual ads we create to promote your OnlyFans profile across Telegram and Twitter promo groups. These flyers are distributed in active communities where fans are already buying content. The goal is to drive direct traffic to your profile and generate sales.</p>
+        </div>
+  
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: What’s included in the flyer promotion service?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: What’s included in the flyer promotion service? We design a professional flyer for you and manually post it in multiple active promo groups with real buyers. We also monitor engagement and ensure your flyer is placed in groups with proven results. You’ll receive a report of where your flyer was posted if requested.</p>
+        </div>
+  
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: How is the mass DM service different from flyers?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: Mass DMs target specific users on Telegram or Twitter by sending out direct promotional messages. Unlike flyers that go to groups, DMs go directly to potential buyers. This approach often results in higher conversions and more personal engagement.</p>
+        </div>
+  
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: Is the traffic you provide real and targeted?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: Yes, all traffic is real and specifically targeted to OnlyFans buyers. We’ve spent years building curated Telegram and Twitter networks filled with high-converting fans. No bots, no fake accounts — just warm leads.</p>
+        </div>
+  
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: Can I choose the niche or target audience for my promo?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: Absolutely. When placing your order, you’ll be able to specify your niche, ideal buyer profile, and other preferences. Our team will tailor your campaign to match your brand and target audience for best results.</p>
+        </div>
+
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: What kind of results can I expect from a promo flyer or DM campaign?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: While results can vary, most clients see a boost in profile visits, followers, and PPV sales within the first 24–72 hours. The stronger your content and pricing strategy, the better your return on investment.</p>
+        </div>
+
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: Are these services one-time or recurring?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: Both options are available. You can purchase a single flyer or DM blast, or opt for weekly or monthly campaigns for ongoing traffic. We also offer discounted packages for recurring clients.</p>
+        </div>
+
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: How long does it take for my promo to start after I order?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: Promotions usually begin within 24–48 hours after receiving all required information and visuals. We’ll notify you when everything is live.</p>
+        </div>
+
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: Can I provide my own flyer or message?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: Yes. If you already have a flyer or a specific DM you’d like us to use, just upload it during checkout. Our team will review and optimize it for maximum performance if needed.</p>
+        </div>
+
+        <div class="bg-zinc-900 bg-opacity-70 backdrop-blur-md p-6 rounded-xl shadow-lg cursor-pointer accordion-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-semibold text-white">Q: Do you offer analytics or reports after the promo?</h4>
+            <i class="fas fa-chevron-down transition-transform transform rotate-0 accordion-arrow" style="background-image: var(--velvet-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+          </div>
+          <p class="text-[#e0b3c8] text-sm mt-4 accordion-content opacity-0 max-h-0 overflow-hidden">A: Yes, we can provide a detailed report showing group placements, estimated impressions, and engagement metrics. For DM campaigns, we also track delivery and open rates when possible.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  <script>
+    // Toggle accordion content visibility
+    document.querySelectorAll('.accordion-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const content = item.querySelector('.accordion-content');
+        const arrow = item.querySelector('.accordion-arrow');
+        
+        content.classList.toggle('opacity-100');
+        content.classList.toggle('max-h-96');
+        content.classList.toggle('opacity-0');
+        content.classList.toggle('max-h-0');
+        
+        arrow.classList.toggle('rotate-180');
+      });
+    });
+  </script>
+  
+  <style>
+    .accordion-item {
+      transition: all 0.3s ease;
+    }
+  
+    .accordion-arrow {
+      transition: transform 0.3s ease;
+    }
+  
+    .accordion-content {
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+  </style>
+
+  
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 px-6 bg-black relative text-center">
+  <!-- Optional Light Leak Overlay -->
+  <div class="pink-leak-overlay"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto">
+    <h2 class="text-4xl lg:text-5xl font-extrabold font-montserrat mb-6 bg-clip-text text-transparent" style="background-image: linear-gradient(to right, #f7b0c0, #4ec1ed);">
+      Ready to Grow?
+    </h2>
+    <p class="text-[#e0b3c8] text-lg mb-10 max-w-xl mx-auto">
+      Connect directly with us on Telegram and take the first step toward seamless transitions and real growth.
+    </p>
+
+
+    <a href="https://t.me/promotrs_bot "
+      class="inline-block px-10 py-4 text-lg font-semibold rounded-full backdrop-blur-md border bg-gradient-to-br from-[#f7b0c0]/10 to-[#4ec1ed]/20 border-pink-300 text-[#f3eee9] shadow-[0_0_25px_rgba(247,176,192,0.3)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(132,203,231,0.5)]">
+      <i class="fab fa-telegram-plane mr-2"></i> Contact on Telegram
+    </a>
+  </div>
+</section>
+
+  
+  
+  
+ 
+
+
+
+
+
+
+
+  
+  
+   
+
+
+</body>
+</html>
+
